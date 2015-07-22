@@ -37,7 +37,7 @@
 	<h3><?php echo __('Acciones'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Editar Servicio'), array('action' => 'edit', $servicio['Servicio']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Eliminar Servicio'), array('action' => 'delete', $servicio['Servicio']['id']), array(), __('Are you sure you want to delete # %s?', $servicio['Servicio']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Eliminar Servicio'), array('action' => 'delete', $servicio['Servicio']['id']), array(), __('Estás seguro que deseas eliminar este servicio?', $servicio['Servicio']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('Lista de Servicios'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Nuevo Servicio'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Lista de Clientes'), array('controller' => 'clientes', 'action' => 'index')); ?> </li>
@@ -49,7 +49,7 @@
 	</ul>
 </div>
 <div class="related">
-	<h3><?php echo __('Related Facturas'); ?></h3>
+	<h3><?php echo __('Facturas relaccionadas'); ?></h3>
 	<?php if (!empty($servicio['Factura'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
@@ -70,7 +70,7 @@
 			<td class="actions">
 				<?php echo $this->Html->link(__('Detalle'), array('controller' => 'facturas', 'action' => 'view', $factura['id'])); ?>
 				<?php echo $this->Html->link(__('Editar'), array('controller' => 'facturas', 'action' => 'edit', $factura['id'])); ?>
-				<?php echo $this->Form->postLink(__('Eliminar'), array('controller' => 'facturas', 'action' => 'delete', $factura['id']), array(), __('Are you sure you want to delete # %s?', $factura['id'])); ?>
+				<?php echo $this->Form->postLink(__('Eliminar'), array('controller' => 'facturas', 'action' => 'delete', $factura['id']), array(), __('Estás seguro que deseas eliminar esta factura?', $factura['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -83,3 +83,4 @@
 		</ul>
 	</div>
 </div>
+

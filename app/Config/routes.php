@@ -24,7 +24,31 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
+	Router::connect('/', array('controller' => 'users', 'action' => 'home'));
+
+	// Servicios
+	Router::connect('/nuevo_servicio', array('controller' => 'servicios', 'action' => 'add'));
+	Router::connect('/editar_servicio/*', array('controller' => 'servicios', 'action' => 'edit'));
+	Router::connect('/detalle_servicio/*', array('controller' => 'servicios', 'action' => 'view'));
+
+	// Proveedores
+	Router::connect('/nuevo_proveedor', array('controller' => 'proveedors', 'action' => 'add'));
+	Router::connect('/editar_proveedor/*', array('controller' => 'proveedors', 'action' => 'edit'));
+	Router::connect('/detalle_proveedor/*', array('controller' => 'proveedors', 'action' => 'view'));
+
+	// Clientes
+	Router::connect('/nuevo_cliente', array('controller' => 'clientes', 'action' => 'add'));
+	Router::connect('/editar_cliente/*', array('controller' => 'clientes', 'action' => 'edit'));
+	Router::connect('/detalle_cliente/*', array('controller' => 'clientes', 'action' => 'view'));
+
+	// Facturas
+	Router::connect('/nueva_factura', array('controller' => 'facturas', 'action' => 'add'));
+	Router::connect('/editarar_factura/*', array('controller' => 'facturas', 'action' => 'edit'));
+	Router::connect('/detalle_factura/*', array('controller' => 'facturas', 'action' => 'view'));
+
+	// Users
+	Router::connect('/nuevo_usuario', array('controller' => 'users', 'action' => 'add'));
+	
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

@@ -34,7 +34,7 @@ class ClientesController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Cliente->exists($id)) {
-			throw new NotFoundException(__('Invalid cliente'));
+			throw new NotFoundException(__('Cliente inválido'));
 		}
 		$options = array('conditions' => array('Cliente.' . $this->Cliente->primaryKey => $id));
 		$this->set('cliente', $this->Cliente->find('first', $options));
@@ -49,10 +49,10 @@ class ClientesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Cliente->create();
 			if ($this->Cliente->save($this->request->data)) {
-				$this->Session->setFlash(__('The cliente has been saved.'));
+				$this->Session->setFlash(__('El cliente ha sido guardado.', 'default', array('class' => 'success')));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The cliente could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('El cliente no ha sido guardado, por favor intentelo de nuevo.'));
 			}
 		}
 	}
@@ -66,14 +66,15 @@ class ClientesController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->Cliente->exists($id)) {
-			throw new NotFoundException(__('Invalid cliente'));
+			throw new NotFoundException(__('Cliente inválido'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+			$this->Cliente->id=$id;
 			if ($this->Cliente->save($this->request->data)) {
-				$this->Session->setFlash(__('The cliente has been saved.'));
+				$this->Session->setFlash(__('El cliente ha sido guardado.', 'default', array('class' => 'success')));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The cliente could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('El cliente no ha sido guardado, por favor intentelo de nuevo.'));
 			}
 		} else {
 			$options = array('conditions' => array('Cliente.' . $this->Cliente->primaryKey => $id));
@@ -91,13 +92,13 @@ class ClientesController extends AppController {
 	public function delete($id = null) {
 		$this->Cliente->id = $id;
 		if (!$this->Cliente->exists()) {
-			throw new NotFoundException(__('Invalid cliente'));
+			throw new NotFoundException(__('Cliente inválido'));
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Cliente->delete()) {
-			$this->Session->setFlash(__('The cliente has been deleted.'));
+			$this->Session->setFlash(__('El cliente ha sido eliminado.', 'default', array('class' => 'success')));
 		} else {
-			$this->Session->setFlash(__('The cliente could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('El cliente no ha sido eliminado, por favor intentelo de nuevo.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

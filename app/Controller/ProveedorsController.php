@@ -34,7 +34,7 @@ class ProveedorsController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Proveedor->exists($id)) {
-			throw new NotFoundException(__('Invalid proveedor'));
+			throw new NotFoundException(__('Proveedor inválido'));
 		}
 		$options = array('conditions' => array('Proveedor.' . $this->Proveedor->primaryKey => $id));
 		$this->set('proveedor', $this->Proveedor->find('first', $options));
@@ -49,10 +49,10 @@ class ProveedorsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Proveedor->create();
 			if ($this->Proveedor->save($this->request->data)) {
-				$this->Session->setFlash(__('The proveedor has been saved.'));
+				$this->Session->setFlash(__('El proveedor ha sido guardado.', 'default', array('class' => 'success')));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The proveedor could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('El proveedor no ha sido guardado, por favor intentelo de nuevo.'));
 			}
 		}
 	}
@@ -66,14 +66,15 @@ class ProveedorsController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->Proveedor->exists($id)) {
-			throw new NotFoundException(__('Invalid proveedor'));
+			throw new NotFoundException(__('Proveedor inválido'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+			$this->Proveedor->id=$id;
 			if ($this->Proveedor->save($this->request->data)) {
-				$this->Session->setFlash(__('The proveedor has been saved.'));
+				$this->Session->setFlash(__('El proveedor ha sido guardado.', 'default', array('class' => 'success')));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The proveedor could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('El proveedor no ha sido guardado, por favor intentelo de nuevo.'));
 			}
 		} else {
 			$options = array('conditions' => array('Proveedor.' . $this->Proveedor->primaryKey => $id));
@@ -91,13 +92,13 @@ class ProveedorsController extends AppController {
 	public function delete($id = null) {
 		$this->Proveedor->id = $id;
 		if (!$this->Proveedor->exists()) {
-			throw new NotFoundException(__('Invalid proveedor'));
+			throw new NotFoundException(__('Proveedor inválido'));
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Proveedor->delete()) {
-			$this->Session->setFlash(__('The proveedor has been deleted.'));
+			$this->Session->setFlash(__('El proveedor ha sido eliminado.', 'default', array('class' => 'success')));
 		} else {
-			$this->Session->setFlash(__('The proveedor could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('El proveedor no ha sido eliminado, por favor intentelo de nuevo.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

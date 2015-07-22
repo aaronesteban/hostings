@@ -3,32 +3,30 @@
 	<table cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('servicio_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('pagado'); ?></th>
 			<th><?php echo $this->Paginator->sort('fecha'); ?></th>
-			<th><?php echo $this->Paginator->sort('pvp'); ?></th>
-			<th><?php echo $this->Paginator->sort('created'); ?></th>
-			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+			<th><?php echo $this->Paginator->sort('pvp', 'PVP'); ?></th>
+			<th><?php echo $this->Paginator->sort('created', 'Creado'); ?></th>
+			<th><?php echo $this->Paginator->sort('modified', 'Modificado'); ?></th>
+			<th><?php echo $this->Paginator->sort('pagado'); ?></th>
+			<th class="actions"><?php echo __('Acciones'); ?></th>
 	</tr>
 	</thead>
 	<tbody>
 	<?php foreach ($facturas as $factura): ?>
 	<tr>
-		<td><?php echo h($factura['Factura']['id']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($factura['Servicio']['name'], array('controller' => 'servicios', 'action' => 'view', $factura['Servicio']['id'])); ?>
 		</td>
-		<td><?php echo h($factura['Factura']['pagado']); ?>&nbsp;</td>
 		<td><?php echo h($factura['Factura']['fecha']); ?>&nbsp;</td>
 		<td><?php echo h($factura['Factura']['pvp']); ?>&nbsp;</td>
 		<td><?php echo h($factura['Factura']['created']); ?>&nbsp;</td>
 		<td><?php echo h($factura['Factura']['modified']); ?>&nbsp;</td>
+		<td><?php echo h($factura['Factura']['pagado']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $factura['Factura']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $factura['Factura']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $factura['Factura']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $factura['Factura']['id']))); ?>
+			<?php echo $this->Html->link(__('Detalle'), array('action' => 'view', $factura['Factura']['id'])); ?>
+			<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $factura['Factura']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $factura['Factura']['id']), array('confirm' => __('Estás seguro que deseas eliminar esta factura?', $factura['Factura']['id']))); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -37,7 +35,7 @@
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(
-		'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+		'format' => __('Pagina {:page} de {:pages}')
 	));
 	?>	</p>
 	<div class="paging">
@@ -49,10 +47,10 @@
 	</div>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php echo __('Acciones'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Factura'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Servicios'), array('controller' => 'servicios', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Servicio'), array('controller' => 'servicios', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nueva Factura'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Lista de Servicios'), array('controller' => 'servicios', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Servicio'), array('controller' => 'servicios', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

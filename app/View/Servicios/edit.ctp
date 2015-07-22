@@ -17,7 +17,7 @@
 	<h3><?php echo __('Acciones'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $this->Form->value('Servicio.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('Servicio.id'))); ?></li>
+		<li><?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $this->Form->value('Servicio.id')), array(), __('Estás seguro que deseas eliminar este servicio?', $this->Form->value('Servicio.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('Lista de Servicios'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('Lista de Clientes'), array('controller' => 'clientes', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Nuevo Cliente'), array('controller' => 'clientes', 'action' => 'add')); ?> </li>

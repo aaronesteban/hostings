@@ -30,7 +30,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('Detalle'), array('action' => 'view', $cliente['Cliente']['id'])); ?>
 			<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $cliente['Cliente']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $cliente['Cliente']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $cliente['Cliente']['id']))); ?>
+			<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $cliente['Cliente']['id']), array('confirm' => __('Estás seguro que deseas eliminar a este cliente?', $cliente['Cliente']['id']))); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -39,7 +39,7 @@
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(
-		'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+		'format' => __('Pagina {:page} de {:pages}')
 	));
 	?>	</p>
 	<div class="paging">

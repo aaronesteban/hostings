@@ -28,7 +28,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('Detalle'), array('action' => 'view', $servicio['Servicio']['id'])); ?>
 			<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $servicio['Servicio']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $servicio['Servicio']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $servicio['Servicio']['id']))); ?>
+			<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $servicio['Servicio']['id']), array('confirm' => __('Estás seguro que deseas eliminar este servicio?', $servicio['Servicio']['id']))); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -37,7 +37,7 @@
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(
-		'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+		'format' => __('Página {:page} de {:pages}')
 	));
 	?>	</p>
 	<div class="paging">

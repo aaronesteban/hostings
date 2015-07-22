@@ -34,7 +34,7 @@ class ServiciosController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Servicio->exists($id)) {
-			throw new NotFoundException(__('Invalid servicio'));
+			throw new NotFoundException(__('Servicio inválido'));
 		}
 		$options = array('conditions' => array('Servicio.' . $this->Servicio->primaryKey => $id));
 		$this->set('servicio', $this->Servicio->find('first', $options));
@@ -49,10 +49,10 @@ class ServiciosController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Servicio->create();
 			if ($this->Servicio->save($this->request->data)) {
-				$this->Session->setFlash(__('The servicio has been saved.'));
+				$this->Session->setFlash(__('El servicio ha sido guardado.', 'default', array('class' => 'success')));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The servicio could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('El servicio no ha sido guardado, por favor intentelo de nuevo.'));
 			}
 		}
 		$clientes = $this->Servicio->Cliente->find('list');
@@ -69,14 +69,15 @@ class ServiciosController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->Servicio->exists($id)) {
-			throw new NotFoundException(__('Invalid servicio'));
+			throw new NotFoundException(__('Servicio inválido'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+			$this->Servicio->id=$id;
 			if ($this->Servicio->save($this->request->data)) {
-				$this->Session->setFlash(__('The servicio has been saved.'));
+				$this->Session->setFlash(__('El servicio ha sido guardado.', 'default', array('class' => 'success')));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The servicio could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('El servicio no ha sido guardado, por favor intentelo de nuevo.'));
 			}
 		} else {
 			$options = array('conditions' => array('Servicio.' . $this->Servicio->primaryKey => $id));
@@ -97,13 +98,13 @@ class ServiciosController extends AppController {
 	public function delete($id = null) {
 		$this->Servicio->id = $id;
 		if (!$this->Servicio->exists()) {
-			throw new NotFoundException(__('Invalid servicio'));
+			throw new NotFoundException(__('Servicio inválido'));
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Servicio->delete()) {
-			$this->Session->setFlash(__('The servicio has been deleted.'));
+			$this->Session->setFlash(__('El servicio ha sido eliminado.', 'default', array('class' => 'success')));
 		} else {
-			$this->Session->setFlash(__('The servicio could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('El servicio no ha sido eliminado, por favor intentelo de nuevo.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
