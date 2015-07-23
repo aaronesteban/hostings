@@ -36,12 +36,12 @@ class AppController extends Controller {
         'Session',
         'Auth' => array(
             'loginRedirect' => array(
-                'controller' => 'users',
-                'action' => 'home'
+                'controller' => 'clientes',
+                'action' => 'index'
             ),
             'logoutRedirect' => array(
-                'controller' => 'users',
-                'action' => 'home'
+                'controller' => 'clientes',
+                'action' => 'index'
             ),
             'authenticate' => array(
                 'Form' => array(
@@ -64,6 +64,6 @@ class AppController extends Controller {
     }
 
     public function beforeFilter() {
-        $this->Auth->allow('home','add');
+        //$this->Auth->allow('home');
     }
 }

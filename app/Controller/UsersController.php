@@ -22,6 +22,8 @@ class UsersController extends AppController {
     }
 
     public function login() {
+        $this->layout = 'login';
+
 	    if ($this->request->is('post')) {
 	        if ($this->Auth->login()) {
 	            return $this->redirect($this->Auth->redirectUrl());
@@ -39,12 +41,6 @@ class UsersController extends AppController {
         $this->User->recursive = 0;
         $this->set('users', $this->paginate());
     }
-    public function home(){
-    	if (!isset($this->User)) {
-    		$this->redirect(array('action' => 'login'));
-    	}
-    }
-
 
     public function add() {
 

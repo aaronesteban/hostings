@@ -41,9 +41,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<div id="container">
 		<div id="header">
 			<!-- <h1>Gestión de hostings</h1> -->
-			<nav>
-				<?= $this->element('header');?>
-			</nav>
 		</div>
 		<div id="content">
 

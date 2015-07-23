@@ -52,11 +52,5 @@
 	<h3><?php echo __('Acciones'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Nuevo Servicio'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('Lista de Clientes'), array('controller' => 'clientes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Nuevo Cliente'), array('controller' => 'clientes', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('Lista de Proveedors'), array('controller' => 'proveedors', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Nuevo Proveedor'), array('controller' => 'proveedors', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('Lista de Facturas'), array('controller' => 'facturas', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Nueva Factura'), array('controller' => 'facturas', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
