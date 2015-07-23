@@ -47,7 +47,7 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('El usuario ha sido guardado.', 'default', array('class' => 'success')));
+                $this->Session->setFlash('El usuario ha sido guardado.', 'default', array('class' => 'success'));
                 return $this->redirect(array('action' => 'home'));
             }
             $this->Session->setFlash(
@@ -65,7 +65,7 @@ class UsersController extends AppController {
             throw new NotFoundException(__('Usuario inválido'));
         }
         if ($this->User->delete()) {
-            $this->Session->setFlash(__('El usuario ha sido eliminado', 'default', array('class' => 'success')));
+            $this->Session->setFlash('El usuario ha sido eliminado', 'default', array('class' => 'success'));
             return $this->redirect(array('action' => 'index'));
         }
         $this->Session->setFlash(__('El usuario no ha sido eliminado'));

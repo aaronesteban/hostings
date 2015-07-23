@@ -49,7 +49,7 @@ class ServiciosController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Servicio->create();
 			if ($this->Servicio->save($this->request->data)) {
-				$this->Session->setFlash(__('El servicio ha sido guardado.', 'default', array('class' => 'success')));
+				$this->Session->setFlash('El servicio ha sido guardado.', 'default', array('class' => 'success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('El servicio no ha sido guardado, por favor intentelo de nuevo.'));
@@ -74,7 +74,7 @@ class ServiciosController extends AppController {
 		if ($this->request->is(array('post', 'put'))) {
 			$this->Servicio->id=$id;
 			if ($this->Servicio->save($this->request->data)) {
-				$this->Session->setFlash(__('El servicio ha sido guardado.', 'default', array('class' => 'success')));
+				$this->Session->setFlash('El servicio ha sido guardado.', 'default', array('class' => 'success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('El servicio no ha sido guardado, por favor intentelo de nuevo.'));
@@ -102,7 +102,7 @@ class ServiciosController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Servicio->delete()) {
-			$this->Session->setFlash(__('El servicio ha sido eliminado.', 'default', array('class' => 'success')));
+			$this->Session->setFlash('El servicio ha sido eliminado.', 'default', array('class' => 'success'));
 		} else {
 			$this->Session->setFlash(__('El servicio no ha sido eliminado, por favor intentelo de nuevo.'));
 		}
