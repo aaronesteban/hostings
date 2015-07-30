@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 /**
  * Users Controller
  *
@@ -17,60 +18,75 @@ class UsersController extends AppController {
 
 	public function beforeFilter() {
 
-        parent::beforeFilter();
-        $this->Auth->allow('logout');
-    }
+		parent::beforeFilter();
+		$this->Auth->allow('logout');
+	}
 
-    public function login() {
-        $this->layout = 'login';
+	public function login() {
+		$this->layout = 'login';
 
-	    if ($this->request->is('post')) {
-	        if ($this->Auth->login()) {
-	            return $this->redirect($this->Auth->redirectUrl());
-	        }
-	        $this->Session->setFlash(__('El nombre de usuario o la contraseña son incorrectos.'));
-	    }
+		if ($this->request->is('post')) {
+			if ($this->Auth->login()) {
+				return $this->redirect($this->Auth->redirectUrl());
+			}
+			$this->Session->setFlash(__('El nombre de usuario o la contraseña son incorrectos.'));
+		}
 	}
 
 	public function logout() {
-	    return $this->redirect($this->Auth->logout());
+		return $this->redirect($this->Auth->logout());
 	}
 
-    public function index() {
+	public function index() {
 
-        $this->User->recursive = 0;
-        $this->set('users', $this->paginate());
-    }
+		$this->User->recursive = 0;
+		$this->set('users', $this->paginate());
+	}
 
-    public function add() {
+	public function add() {
 
-        if ($this->request->is('post')) {
-            $this->User->create();
-            if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash('El usuario ha sido guardado.', 'default', array('class' => 'success'));
-                return $this->redirect(array('action' => 'home'));
-            }
-            $this->Session->setFlash(
-                __('El usuario no ha sido guardado, por favor intentelo de nuevo.')
-            );
-        }
-    }
+		if ($this->request->is('post')) {
+			$this->User->create();
+			if ($this->User->save($this->request->data)) {
+				$this->Session->setFlash('El usuario ha sido guardado.', 'default', array('class' => 'success'));
+				return $this->redirect(array('action' => 'home'));
+			}
+			$this->Session->setFlash(
+				__('El usuario no ha sido guardado, por favor intentelo de nuevo.')
+			);
+		}
+	}
 
-    public function delete($id = null) {
+	public function delete($id = null) {
 
-        $this->request->allowMethod('post');
+		$this->request->allowMethod('post');
 
-        $this->User->id = $id;
-        if (!$this->User->exists()) {
-            throw new NotFoundException(__('Usuario inválido'));
-        }
-        if ($this->User->delete()) {
-            $this->Session->setFlash('El usuario ha sido eliminado', 'default', array('class' => 'success'));
-            return $this->redirect(array('action' => 'index'));
-        }
-        $this->Session->setFlash(__('El usuario no ha sido eliminado'));
-        return $this->redirect(array('action' => 'index'));
-    }
+		$this->User->id = $id;
+		if (!$this->User->exists()) {
+			throw new NotFoundException(__('Usuario inválido'));
+		}
+		if ($this->User->delete()) {
+			$this->Session->setFlash('El usuario ha sido eliminado', 'default', array('class' => 'success'));
+			return $this->redirect(array('action' => 'index'));
+		}
+		$this->Session->setFlash(__('El usuario no ha sido eliminado'));
+		return $this->redirect(array('action' => 'index'));
+	}
+
+	function sendNewUserMail() {
+		$this->layout = 'ajax';
+		$this->autoRender = false;
+
+		$email = new CakeEmail();
+		$email->config('smtp');
+		$email->to('ennety@gmail.com');
+		$email->template('simple_message')
+		->emailFormat('html')
+		->subject('Prueba')
+		->viewVars( array())
+		->send();
+
+	}
 
 }
 

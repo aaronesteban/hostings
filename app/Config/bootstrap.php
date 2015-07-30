@@ -113,3 +113,7 @@ CakeLog::config('error', array(
 	'file' => 'error',
 ));
 CakePlugin::load('DebugKit');
+
+
+
+Configure::load('config');

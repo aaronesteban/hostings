@@ -48,12 +48,12 @@ class EmailConfig {
 
 	public $smtp = array(
 		'transport' => 'Smtp',
-		'from' => array('site@localhost' => 'My Site'),
-		'host' => 'localhost',
+		'from' => array('aaron@deramosandserch.com' => 'De Ramos & Serch'),
+		'host' => 'deramosandserch.com',
 		'port' => 25,
 		'timeout' => 30,
-		'username' => 'user',
-		'password' => 'secret',
+		'username' => 'aaron@deramosandserch.com',
+		'password' => 'aVvQwsA7ySK0',
 		'client' => null,
 		'log' => false,
 		//'charset' => 'utf-8',

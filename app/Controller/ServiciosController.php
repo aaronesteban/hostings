@@ -108,4 +108,19 @@ class ServiciosController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+	function test(){
+		$now = new DateTime('now');
+		$twoweeks = new DateTime( Configure::read('semanas_aviso') );
+		$options = array('conditions' => array(
+			'Servicio.vencimiento >=' => $now->format('Y-m-d'),
+			'Servicio.vencimiento <' => $twoweeks->format('Y-m-d')
+		));
+
+		$servicios = $this->Servicio->find('all',$options);
+		debug($options);
+		debug($servicios);
+		exit();
+
+	}
 }
