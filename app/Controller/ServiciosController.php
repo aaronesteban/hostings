@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 /**
  * Servicios Controller
  *
@@ -109,18 +110,67 @@ class ServiciosController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
 
-	function test(){
+	function cronjob(){
 		$now = new DateTime('now');
-		$twoweeks = new DateTime( Configure::read('semanas_aviso') );
-		$options = array('conditions' => array(
-			'Servicio.vencimiento >=' => $now->format('Y-m-d'),
-			'Servicio.vencimiento <' => $twoweeks->format('Y-m-d')
-		));
+		$twoweeks = new DateTime( Configure::read('semanas_aviso'));
+		$options = array(
+			'conditions' => array(
+				'Servicio.vencimiento >=' => $now->format('Y-m-d'),
+				'Servicio.vencimiento <' => $twoweeks->format('Y-m-d')
+			),
+			'contain' => array('Cliente')
+		);
 
 		$servicios = $this->Servicio->find('all',$options);
-		debug($options);
-		debug($servicios);
-		exit();
+		
 
+		foreach ($servicios as $servicio) {
+
+			
+			$options = array(
+				'conditions' => array(
+					'Factura.servicio_id' => $servicio['Servicio']['id'],
+					'Factura.fecha >=' => $now->format('Y-m-d'),
+					'Factura.fecha <' => $twoweeks->format('Y-m-d')
+				),
+				'contain' => array()
+			);
+
+			$facturas = $this->Servicio->Factura->find('all', $options);
+
+			if (empty($facturas)) {
+				$factura = array(
+					'Factura' => array(
+						'servicio_id' => $servicio['Servicio']['id'],
+						'pagado' => '0',
+						'fecha' => $servicio['Servicio']['vencimiento'],
+						'pvp' => $servicio['Servicio']['pvp'],
+						'name' => $servicio['Servicio']['name'],
+						),
+					);
+
+				$this->Servicio->Factura->create();
+				if ($this->Servicio->Factura->save($factura)) {
+					$this->_sendMail($servicio['Cliente'], $factura, 'first_email');
+				}
+			} else {
+				//recordatorios
+			}
+		
+		}
+		exit();
+	}
+
+	function _sendMail($cliente, $factura, $template = 'first_email') {
+		$email = new CakeEmail();
+		$email->config('smtp');
+		$email->to('ennety@gmail.com');
+		//$email->to($cliente['email']);
+		$email->bcc('ennety@gmail.com');
+		$email->template($template)
+		->emailFormat('html')
+		->subject(Configure::read('Email.Subject.first_email'))
+		->viewVars( compact('cliente', 'factura') )
+		->send();
 	}
 }

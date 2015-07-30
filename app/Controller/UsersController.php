@@ -1,6 +1,5 @@
 <?php
 App::uses('AppController', 'Controller');
-App::uses('CakeEmail', 'Network/Email');
 /**
  * Users Controller
  *
@@ -71,21 +70,6 @@ class UsersController extends AppController {
 		}
 		$this->Session->setFlash(__('El usuario no ha sido eliminado'));
 		return $this->redirect(array('action' => 'index'));
-	}
-
-	function sendNewUserMail() {
-		$this->layout = 'ajax';
-		$this->autoRender = false;
-
-		$email = new CakeEmail();
-		$email->config('smtp');
-		$email->to('ennety@gmail.com');
-		$email->template('simple_message')
-		->emailFormat('html')
-		->subject('Prueba')
-		->viewVars( array())
-		->send();
-
 	}
 
 }

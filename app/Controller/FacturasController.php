@@ -15,6 +15,11 @@ class FacturasController extends AppController {
  */
 	public $components = array('Paginator');
 
+
+    public function beforeFilter() {
+        $this->Auth->allow('ver_cliente');
+    }
+
 /**
  * index method
  *

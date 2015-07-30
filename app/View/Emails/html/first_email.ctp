@@ -1,0 +1,2 @@
+<? debug($cliente);?>
+<? debug($factura);?>
