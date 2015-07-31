@@ -112,4 +112,10 @@ class FacturasController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
 
+	public function ver_cliente() {
+		$this->set('factura', $this->Factura->find('first', array(
+			'contain' => array('Servicio'=>array('Cliente'))
+		)));
+	}
+
 }

@@ -122,7 +122,6 @@ class ServiciosController extends AppController {
 		);
 
 		$servicios = $this->Servicio->find('all',$options);
-		
 
 		foreach ($servicios as $servicio) {
 
@@ -137,8 +136,7 @@ class ServiciosController extends AppController {
 			);
 
 			$facturas = $this->Servicio->Factura->find('all', $options);
-
-			if (empty($facturas)) {
+			if (empty($facturas) && $servicio['Servicio']['cancelado'] === false) {
 				$factura = array(
 					'Factura' => array(
 						'servicio_id' => $servicio['Servicio']['id'],
@@ -148,9 +146,9 @@ class ServiciosController extends AppController {
 						'name' => $servicio['Servicio']['name'],
 						),
 					);
-
 				$this->Servicio->Factura->create();
 				if ($this->Servicio->Factura->save($factura)) {
+					$factura['Factura']['id'] = $this->Servicio->Factura->id;
 					$this->_sendMail($servicio['Cliente'], $factura, 'first_email');
 				}
 			} else {
