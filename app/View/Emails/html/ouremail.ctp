@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-	<p><?=$text;?></p>
+	<p>Mensaje de aviso para envio de factura al cliente.</p>
 	<h1>Factura</h1>
 		<dl>
 			<dt><strong>Nombre:  </strong><?=$cliente['name']; ?></dt>

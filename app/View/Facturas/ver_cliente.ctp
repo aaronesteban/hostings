@@ -59,8 +59,8 @@
 
 	</dl>
 <?
-$iva = $factura['Factura']['pvp'] *21/100;
-$irpf = $factura['Factura']['pvp'] *15/100;
+$iva = $factura['Factura']['pvp'] * $factura['Factura']['iva'] / 100;
+$irpf = $factura['Factura']['pvp'] * $factura['Factura']['irpf'] /100;
 $total = $factura['Factura']['pvp'] + $iva - $irpf;
 ?>
 	<table>
