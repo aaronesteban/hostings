@@ -1,5 +1,14 @@
-<div class="clientes form">
-<?php echo $this->Form->create('Cliente'); ?>
+<div class="users form-group">
+<?php echo $this->Form->create('Cliente', array(
+    'class' => 'form-group',
+    'inputDefaults' => array(
+        'format' => array('before', 'label', 'between', 'input', 'error', 'after'),
+        'div' => array('class' => 'control-group'),
+        'label' => array('class' => 'control-label'),
+        'between' => '<div class="controls">',
+        'after' => '</div>',
+        'error' => array('attributes' => array('wrap' => 'span', 'class' => 'help-inline')),
+    )));?>
 	<fieldset>
 		<legend><?php echo __('Agregar Cliente'); ?></legend>
 	<?php
@@ -12,5 +21,5 @@
 		echo $this->Form->input('email');
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Enviar')); ?>
+<?php echo $this->Form->button('Enviar', array('class' => 'btn btn-success')); ?>
 </div>

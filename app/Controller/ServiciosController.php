@@ -188,8 +188,8 @@ class ServiciosController extends AppController {
 		foreach ($facturas as $factura) {
 			$diavencimiento = new DateTime($factura['Factura']['fecha']);
 
-			$recordatorio3 = new DateTime($factura['Factura']['fecha']);
-			$recordatorio3->modify('- 1 days');
+			// $recordatorio3 = new DateTime($factura['Factura']['fecha']);
+			// $recordatorio3->modify('- 1 days');
 			$recordatorio2 = new DateTime($factura['Factura']['fecha']);
 			$recordatorio2->modify('- 4 days');
 			$recordatorio1 = new DateTime($factura['Factura']['fecha']);
@@ -215,13 +215,13 @@ class ServiciosController extends AppController {
 					$this->Servicio->Factura->saveField('enviado', $now->format('Y-m-d'));
 				}
 				//recordatorio 1 día antes.
-				if ($recordatorio3->format('Y-m-d') === $now->format('Y-m-d')) {
-					$textorecordatorio = Configure::read('Email.Text.third_text');
-					$this->_sendMail($cliente, $factura, 'first_email', $textorecordatorio);
+				// if ($recordatorio3->format('Y-m-d') === $now->format('Y-m-d')) {
+				// 	$textorecordatorio = Configure::read('Email.Text.third_text');
+				// 	$this->_sendMail($cliente, $factura, 'first_email', $textorecordatorio);
 					
-					$this->Servicio->Factura->id = $factura['Factura']['id'];
-					$this->Servicio->Factura->saveField('enviado', $now->format('Y-m-d'));
-				}
+				// 	$this->Servicio->Factura->id = $factura['Factura']['id'];
+				// 	$this->Servicio->Factura->saveField('enviado', $now->format('Y-m-d'));
+				// }
 			}
 		}
 	}
@@ -234,9 +234,9 @@ class ServiciosController extends AppController {
 		}
 		else{
 			$email->to('ennety@gmail.com');
-			//$email->to($cliente['email']);
+			$email->to($cliente['email']);
 		}
-		$email->bcc('ennety@gmail.com');
+		$email->bcc('aaron@deramosandserch.com');
 		$email->template($template)
 		->emailFormat('html')
 		->subject(Configure::read('Email.Subject.first_email'))

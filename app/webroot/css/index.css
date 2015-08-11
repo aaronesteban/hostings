@@ -1,33 +1,48 @@
 #header {
-	background-color: grey;
-	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#content{
+	margin-left: 30px;
+}
+.boton{
+	margin-top: 10px;
+}
+h3{
+	margin-bottom: 20px;
+}
+.row{
 	margin-bottom: 40px;
 }
-#header .nav-tabs>li.active>a{
-	background-color: #337ab7;
+.control-group{
+	margin-bottom: 12px;
 }
-#header a:active:focus{
-	color:	#337ab7;
+.table>tbody>tr>td{
+	padding-top: 15px;
 }
-#header a:hover{
-	background-color: #337ab7;
-	opacity: 0.7;
+.table>tbody>tr>td.actions{
+	padding-top: 8px;
 }
-#header .logout a{
-	left: 460px;
+li{
+	list-style:none;
 }
-#header .logout a:hover{
-	background-color: #DC143C;
-	opacity: 0.7;
+.index p{
+	padding-left: 33px;
 }
-body{
-	background-color: #C0C0C0;
-	width: 100%;
-	height: 600px;
+.next{
+	padding-left: 30px;
 }
-dd,dt{
-	line-height: 2em;
+.control-label{
+	margin-bottom: 0;
 }
-dd{
-	  margin-left: 10em;
+.btn-success{
+	margin-top: 10px;
+}
+.btn-info{
+	margin-bottom: 5px;
+}
+.btn-warning{
+	margin-bottom: 5px;
+}
+.btn-danger{
+	margin-bottom: 5px;
 }

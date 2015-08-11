@@ -54,7 +54,7 @@
 		<dt>Provincia:</dt>
 		<dd><?=$facturacion['pais']; ?></dd>
 
-		<dt>Servicio:</dt>
+		<dt>Contacto:</dt>
 		<dd><?=$facturacion['email']; ?></dd>
 
 	</dl>

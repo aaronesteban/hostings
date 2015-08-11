@@ -35,7 +35,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('script');
 	?>
 	<link rel="stylesheet" type="text/css" href="/hostings/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/hostings/css/index.css">
+	<!-- <link rel="stylesheet" type="text/css" href="/hostings/css/index.css"> -->
 </head>
 <body>
 	<div id="container">

@@ -22,13 +22,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $this->fetch('title'); ?>
+		Facturación de hostings
+		<?//php echo $this->fetch('title'); ?>
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+		//echo $this->Html->css('cake.generic');
 		
 		echo $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js');
 
@@ -36,6 +36,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+	<link rel="stylesheet" type="text/css" href="/hostings/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="/hostings/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/hostings/css/index.css">
 </head>
