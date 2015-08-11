@@ -1,12 +1,12 @@
 <div class='row'>	
 	<div class="actions col-md-2">
-		<h3><?php echo __('Acciones'); ?></h3>
+		<h4><?php echo __('Acciones'); ?></h4>
 		<ul>
-			<li><?php echo $this->Html->link(__('Nuevo usuario'), array('action' => 'add'), array('class' => 'btn btn-primary')); ?></li>
+			<li><?php echo $this->Html->link(__('Nuevo usuario'), array('action' => 'add'), array('class' => 'btn btn-sm btn-primary')); ?></li>
 		</ul>
 	</div>
 	<div class="users index col-md-10">
-		<h2><?php echo __('Usuarios'); ?></h2>
+		<h1><?php echo __('Usuarios'); ?></h1>
 		<table cellpadding="0" cellspacing="0" class='table'>
 		<thead>
 		<tr>
@@ -19,13 +19,13 @@
 		</thead>
 		<tbody>
 		<?php foreach ($users as $user): ?>
-		<tr>
+		<tr class="informacion_usuario">
 			<td><?php echo h($user['User']['name']); ?>&nbsp;</td>
 			<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
 			<td><?php echo h($user['User']['username']); ?>&nbsp;</td>
 			<td><?php echo h($user['User']['password']); ?>&nbsp;</td>
 			<td class="actions">
-				<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $user['User']['id']), array('class' => 'btn btn-danger'), array('confirm' => __('Estás seguro que deseas eliminar este usuario?', $user['User']['id']))); ?>
+				<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $user['User']['id']), array('class' => 'btn btn-xs btn-danger'), array('confirm' => __('Estás seguro que deseas eliminar este usuario?', $user['User']['id']))); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>

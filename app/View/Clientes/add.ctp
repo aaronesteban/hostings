@@ -1,4 +1,4 @@
-<div class="users form-group">
+<div class="users form-group agrega_cliente">
 <?php echo $this->Form->create('Cliente', array(
     'class' => 'form-group',
     'inputDefaults' => array(

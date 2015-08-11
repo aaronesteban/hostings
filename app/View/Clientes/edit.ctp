@@ -1,4 +1,4 @@
-<div class="clientes form">
+<div class="clientes form edita_cliente">
 	<?php echo $this->Form->create('Cliente', array(
     'class' => 'form-group',
     'inputDefaults' => array(

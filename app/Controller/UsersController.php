@@ -48,7 +48,7 @@ class UsersController extends AppController {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash('El usuario ha sido guardado.', 'default', array('class' => 'success'));
-				return $this->redirect(array('action' => 'home'));
+				return $this->redirect(array('action' => 'index'));
 			}
 			$this->Session->setFlash(
 				__('El usuario no ha sido guardado, por favor intentelo de nuevo.')
