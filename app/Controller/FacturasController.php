@@ -113,7 +113,7 @@ class FacturasController extends AppController {
 	}
 
 	public function ver_cliente($hash = null) {
-
+		$this->layout = 'factura';
 		$this->set('factura', $this->Factura->find('first', array(
 			'conditions' => array(
 				'hash' => $hash,

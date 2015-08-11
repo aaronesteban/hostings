@@ -5,7 +5,7 @@
 			<li><?php echo $this->Html->link(__('Nuevo usuario'), array('action' => 'add'), array('class' => 'btn btn-primary')); ?></li>
 		</ul>
 	</div>
-	<div class="users index col-md-9">
+	<div class="users index col-md-10">
 		<h2><?php echo __('Usuarios'); ?></h2>
 		<table cellpadding="0" cellspacing="0" class='table'>
 		<thead>

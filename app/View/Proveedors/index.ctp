@@ -5,7 +5,7 @@
 			<li><?php echo $this->Html->link(__('Nuevo Proveedor'), array('action' => 'add'), array('class' => 'btn btn-primary')); ?></li>
 		</ul>
 	</div>
-	<div class="proveedors index col-md-9">
+	<div class="proveedors index col-md-10">
 		<h2><?php echo __('Proveedores'); ?></h2>
 		<table cellpadding="0" cellspacing="0" class='table'>
 		<thead>
