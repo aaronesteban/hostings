@@ -1,6 +1,6 @@
-<div class="servicios form">
+<div class="servicios form edita_servicio">
 <?php echo $this->Form->create('Servicio', array(
-    'class' => 'form-group',
+    'class' => 'form-inline',
     'inputDefaults' => array(
         'format' => array('before', 'label', 'between', 'input', 'error', 'after'),
         'div' => array('class' => 'control-group'),
@@ -12,14 +12,14 @@
 	<fieldset>
 		<legend><?php echo __('Editar Servicio'); ?></legend>
 	<?php
-		echo $this->Form->input('cliente_id');
-		echo $this->Form->input('proveedor_id');
-		echo $this->Form->input('name');
-		echo $this->Form->input('vencimiento');
-		echo $this->Form->input('pvp');
-		echo $this->Form->input('cancelado');
+		echo $this->Form->input('cliente_id', array('class'=>'form-control'));
+		echo $this->Form->input('proveedor_id', array('class'=>'form-control'));
+		echo $this->Form->input('name', array('class'=>'form-control'));
+		echo $this->Form->input('vencimiento', array('class'=>'form-control'));
+		echo $this->Form->input('pvp', array('class'=>'form-control'));
+		echo $this->Form->input('cancelado', array('class'=>'form-control'));
 	?>
 	</fieldset>
-<?php echo $this->Form->button('Enviar', array('class' => 'btn btn-success')); ?>
+<?php echo $this->Form->button('Enviar', array('class' => 'btn btn-sm btn-success')); ?>
 </div>
 

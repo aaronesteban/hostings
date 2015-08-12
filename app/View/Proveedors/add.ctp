@@ -1,6 +1,6 @@
-<div class="proveedors form">
+<div class="proveedors form agrega_proveedor">
 <?php echo $this->Form->create('Proveedor', array(
-    'class' => 'form-group',
+    'class' => 'form-inline',
     'inputDefaults' => array(
         'format' => array('before', 'label', 'between', 'input', 'error', 'after'),
         'div' => array('class' => 'control-group'),
@@ -12,9 +12,9 @@
 	<fieldset>
 		<legend><?php echo __('Agregar Proveedor'); ?></legend>
 	<?php
-		echo $this->Form->input('name', array('label' => 'Nombre'));
-		echo $this->Form->input('url');
+		echo $this->Form->input('name', array('label' => 'Nombre', 'class'=>'form-control'));
+		echo $this->Form->input('url', array('class'=>'form-control'));
 	?>
 	</fieldset>
-<?php echo $this->Form->button('Enviar', array('class' => 'btn btn-success')); ?>
+<?php echo $this->Form->button('Enviar', array('class' => 'btn btn-sm btn-success')); ?>
 </div>

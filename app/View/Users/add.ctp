@@ -1,6 +1,6 @@
-<div class="users form">
+<div class="users form agrega_usuario">
 <?php echo $this->Form->create('User', array(
-    'class' => 'form-group',
+    'class' => 'form-inline',
     'inputDefaults' => array(
         'format' => array('before', 'label', 'between', 'input', 'error', 'after'),
         'div' => array('class' => 'control-group'),
@@ -12,12 +12,12 @@
 	<fieldset>
 		<legend><?php echo __('Agregar Usuario'); ?></legend>
 	<?php
-		echo $this->Form->input('name', array('label' => 'Nombre'));
-		echo $this->Form->input('email');
-		echo $this->Form->input('username');
-		echo $this->Form->input('password');
+		echo $this->Form->input('name', array('label' => 'Nombre', 'class'=>'form-control'));
+		echo $this->Form->input('email', array('class'=>'form-control'));
+		echo $this->Form->input('username', array('class'=>'form-control'));
+		echo $this->Form->input('password', array('class'=>'form-control'));
 	?>
 	</fieldset>
-<?php echo $this->Form->button('Enviar', array('class' => 'btn btn-success')); ?>
+<?php echo $this->Form->button('Enviar', array('class' => 'btn btn-sm btn-success')); ?>
 </div>
 

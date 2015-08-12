@@ -41,7 +41,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<link rel="stylesheet" type="text/css" href="/hostings/css/index.css">
 </head>
 <body>
-	<div id="container">
+	<div id="container_factura">
 		<div id="header">
 			
 		</div>

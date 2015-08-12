@@ -49,10 +49,10 @@ class ProveedorsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Proveedor->create();
 			if ($this->Proveedor->save($this->request->data)) {
-				$this->Session->setFlash('El proveedor ha sido guardado.', 'default', array('class' => 'success'));
+				$this->Session->setFlash('El proveedor ha sido guardado.', 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('El proveedor no ha sido guardado, por favor intentelo de nuevo.'));
+				$this->Session->setFlash('El proveedor no ha sido guardado, por favor intentelo de nuevo.', 'default', array('class' => 'alert alert-danger'));
 			}
 		}
 	}
@@ -71,10 +71,10 @@ class ProveedorsController extends AppController {
 		if ($this->request->is(array('post', 'put'))) {
 			$this->Proveedor->id=$id;
 			if ($this->Proveedor->save($this->request->data)) {
-				$this->Session->setFlash('El proveedor ha sido guardado.', 'default', array('class' => 'success'));
+				$this->Session->setFlash('El proveedor ha sido modificado.', 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('El proveedor no ha sido guardado, por favor intentelo de nuevo.'));
+				$this->Session->setFlash('El proveedor no ha sido guardado, por favor intentelo de nuevo.', 'default', array('class' => 'alert alert-danger'));
 			}
 		} else {
 			$options = array('conditions' => array('Proveedor.' . $this->Proveedor->primaryKey => $id));
@@ -96,9 +96,9 @@ class ProveedorsController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Proveedor->delete()) {
-			$this->Session->setFlash('El proveedor ha sido eliminado.', 'default', array('class' => 'success'));
+			$this->Session->setFlash('El proveedor ha sido eliminado.', 'default', array('class' => 'alert alert-success'));
 		} else {
-			$this->Session->setFlash(__('El proveedor no ha sido eliminado, por favor intentelo de nuevo.'));
+			$this->Session->setFlash('El proveedor no ha sido eliminado, por favor intentelo de nuevo.', 'default', array('class' => 'alert alert-danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

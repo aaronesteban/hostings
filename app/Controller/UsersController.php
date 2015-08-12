@@ -28,7 +28,7 @@ class UsersController extends AppController {
 			if ($this->Auth->login()) {
 				return $this->redirect($this->Auth->redirectUrl());
 			}
-			$this->Session->setFlash(__('El nombre de usuario o la contraseña son incorrectos.'));
+			$this->Session->setFlash('El nombre de usuario o la contraseña son incorrectos.', 'default', array('class' => 'alert alert-danger'));
 		}
 	}
 
@@ -47,12 +47,10 @@ class UsersController extends AppController {
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash('El usuario ha sido guardado.', 'default', array('class' => 'success'));
+				$this->Session->setFlash('El usuario ha sido guardado.', 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			}
-			$this->Session->setFlash(
-				__('El usuario no ha sido guardado, por favor intentelo de nuevo.')
-			);
+			$this->Session->setFlash('El usuario no ha sido guardado, por favor intentelo de nuevo.', 'default', array('class' => 'alert alert-danger'));
 		}
 	}
 
@@ -65,10 +63,10 @@ class UsersController extends AppController {
 			throw new NotFoundException(__('Usuario inválido'));
 		}
 		if ($this->User->delete()) {
-			$this->Session->setFlash('El usuario ha sido eliminado', 'default', array('class' => 'success'));
+			$this->Session->setFlash('El usuario ha sido eliminado', 'default', array('class' => 'alert alert-success'));
 			return $this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('El usuario no ha sido eliminado'));
+		$this->Session->setFlash('El usuario no ha sido eliminado', 'default', array('class' => 'alert alert-danger'));
 		return $this->redirect(array('action' => 'index'));
 	}
 

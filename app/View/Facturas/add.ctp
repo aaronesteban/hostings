@@ -1,6 +1,6 @@
-<div class="facturas form">
+<div class="facturas form agrega_factura">
 <?php echo $this->Form->create('Factura', array(
-    'class' => 'form-group',
+    'class' => 'form-inline',
     'inputDefaults' => array(
         'format' => array('before', 'label', 'between', 'input', 'error', 'after'),
         'div' => array('class' => 'control-group'),
@@ -12,11 +12,11 @@
 	<fieldset>
 		<legend><?php echo __('Nueva Factura'); ?></legend>
 	<?php
-		echo $this->Form->input('servicio_id');
-		echo $this->Form->input('fecha');
-		echo $this->Form->input('pvp', array('label' => 'PVP'));
-		echo $this->Form->input('pagado');
+		echo $this->Form->input('servicio_id', array('class'=>'form-control'));
+		echo $this->Form->input('fecha', array('class'=>'form-control'));
+		echo $this->Form->input('pvp', array('label' => 'PVP', 'class'=>'form-control'));
+		echo $this->Form->input('pagado', array('class'=>'form-control'));
 	?>
 	</fieldset>
-<?php echo $this->Form->button('Enviar', array('class' => 'btn btn-success')); ?>
+<?php echo $this->Form->button('Enviar', array('class' => 'btn btn-sm btn-success')); ?>
 </div>

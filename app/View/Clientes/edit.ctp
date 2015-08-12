@@ -1,6 +1,6 @@
 <div class="clientes form edita_cliente">
 	<?php echo $this->Form->create('Cliente', array(
-    'class' => 'form-group',
+    'class' => 'form-inline',
     'inputDefaults' => array(
         'format' => array('before', 'label', 'between', 'input', 'error', 'after'),
         'div' => array('class' => 'control-group'),
@@ -13,15 +13,15 @@
 			<legend><?php echo __('Editar Cliente'); ?></legend>
 		<?php
 			echo $this->Form->input('id');
-			echo $this->Form->input('name', array('label' => 'Nombre completo'));
-			echo $this->Form->input('cif', array('label' => 'CIF/NIF'));
-			echo $this->Form->input('direccion', array('label' => 'Dirección'));
-			echo $this->Form->input('cp', array('label' => 'CP'));
-			echo $this->Form->input('localidad');
-			echo $this->Form->input('provincia');
-			echo $this->Form->input('email');
+			echo $this->Form->input('name', array('label' => 'Nombre completo', 'class'=>'form-control'));
+			echo $this->Form->input('cif', array('label' => 'CIF/NIF', 'class'=>'form-control'));
+			echo $this->Form->input('direccion', array('label' => 'Dirección', 'class'=>'form-control'));
+			echo $this->Form->input('cp', array('label' => 'CP', 'class'=>'form-control'));
+			echo $this->Form->input('localidad', array('class'=>'form-control'));
+			echo $this->Form->input('provincia', array('class'=>'form-control'));
+			echo $this->Form->input('email', array('class'=>'form-control'));
 		?>
 		</fieldset>
-	<?php echo $this->Form->button('Enviar', array('class' => 'btn btn-success')); ?>
+	<?php echo $this->Form->button('Enviar', array('class' => 'btn btn-sm btn-success')); ?>
 </div>
 

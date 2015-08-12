@@ -52,7 +52,7 @@ class ClientesController extends AppController {
 				$this->Session->setFlash('El cliente ha sido guardado.', 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('El cliente no ha sido guardado, por favor intentelo de nuevo.'));
+				$this->Session->setFlash('El cliente no ha sido guardado, por favor intentelo de nuevo.', 'default', array('class' => 'alert alert-danger'));
 			}
 		}
 	}
@@ -71,10 +71,10 @@ class ClientesController extends AppController {
 		if ($this->request->is(array('post', 'put'))) {
 			$this->Cliente->id=$id;
 			if ($this->Cliente->save($this->request->data)) {
-				$this->Session->setFlash('El cliente ha sido guardado.', 'default', array('class' => 'alert alert-success'));
+				$this->Session->setFlash('El cliente ha sido modificado.', 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('El cliente no ha sido guardado, por favor intentelo de nuevo.'));
+				$this->Session->setFlash('El cliente no ha sido guardado, por favor intentelo de nuevo.', 'default', array('class' => 'alert alert-danger'));
 			}
 		} else {
 			$options = array('conditions' => array('Cliente.' . $this->Cliente->primaryKey => $id));
@@ -98,7 +98,7 @@ class ClientesController extends AppController {
 		if ($this->Cliente->delete()) {
 			$this->Session->setFlash('El cliente ha sido eliminado.', 'default', array('class' => 'alert alert-success'));
 		} else {
-			$this->Session->setFlash(__('El cliente no ha sido eliminado, por favor intentelo de nuevo.'));
+			$this->Session->setFlash('El cliente no ha sido eliminado, por favor intentelo de nuevo.', 'default', array('class' => 'alert alert-danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

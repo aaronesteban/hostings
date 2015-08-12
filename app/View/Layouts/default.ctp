@@ -31,6 +31,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		//echo $this->Html->css('cake.generic');
 		
 		echo $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js');
+		echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');

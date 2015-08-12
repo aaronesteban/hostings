@@ -1,10 +1,23 @@
 #header {
 	margin-bottom: 20px;
 }
+.logo{
+	width: 100px;
+	height: auto;
+	margin-bottom: 20px;
+}
+#header li a:hover{
+	background-color: rgba(220, 220, 220, 0.7);
+}
 #container{
-	max-width: 1024px;
+	max-width: 90%;
 	margin: 0 auto;
 	background-color: rgba(220, 220, 220, 0.42);
+	padding-bottom: 15px;
+}
+#container_factura{
+	max-width: 90%;
+	margin: 0 auto;
 	padding-bottom: 15px;
 }
 #content{
@@ -13,7 +26,9 @@
 }
 .informacion_cliente, 
 .informacion_servicio,
-.informacion_usuario{
+.informacion_usuario,
+.informacion_factura,
+.informacion_proveedor{
 	font-size: 12px;
 }
 .paging{
@@ -32,7 +47,7 @@ h3{
 	padding-top: 15px;
 }
 .table>tbody>tr>td.actions{
-	padding-top: 8px;
+	padding-top: 12px;
 }
 .table_pagination{
 	min-height: 500px;
@@ -73,7 +88,74 @@ li{
 .mb5{
 	margin-bottom: 5px;
 }
+.agrega_cliente label{
+	display: block;
+}
 .agrega_cliente input,
-.edita_cliente input{
-	width: 210px;
+.edita_cliente input,
+.agrega_servicio input,
+.edita_servicio input,
+.agrega_proveedor input,
+.edita_proveedor input,
+.agrega_factura input,
+.edita_factura input,
+.agrega_usuario input,
+.logueate input{
+	min-width: 210px;
+}
+#ServicioCancelado,
+#FacturaPagado{
+	min-width: 0;
+}
+.rojo{
+	background-color: #C9302C;
+	color: white;
+	border-radius: 3px;
+	padding: 1px 5px;
+	font-weight: bold;
+}
+.verde{
+	background-color: #449D44;
+	color: white;
+	border-radius: 3px;
+	padding: 1px 5px;
+	font-weight: bold;
+}
+.text_right{
+	text-align: right;
+}
+td.actions{
+	width: 180px;
+	text-align: right;
+}
+td.actions_user{
+	width: 75px;
+	text-align: right;
+}
+.nif{
+	width: 90px;
+}
+.codigopostal {
+	width: 70px;
+}
+.pvp{
+	width: 55px;
+}
+.estado{
+	width: 105px;
+}
+.vencimiento{
+	width: 115px;
+}
+.fecha{
+	width: 100px;
+}
+th a.asc:after {
+	content: ' ⇣';
+}
+th a.desc:after {
+	content: ' ⇡';
+}
+.ui-corner-all{
+	display: none;
 }

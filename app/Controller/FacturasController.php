@@ -54,10 +54,10 @@ class FacturasController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Factura->create();
 			if ($this->Factura->save($this->request->data)) {
-				$this->Session->setFlash('La factura ha sido guardada.', 'default', array('class' => 'success'));
+				$this->Session->setFlash('La factura ha sido guardada.', 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('La factura no ha sido guardada, por favor intentelo de nuevo.'));
+				$this->Session->setFlash('La factura no ha sido guardada, por favor intentelo de nuevo.', 'default', array('class' => 'alert alert-danger'));
 			}
 		}
 		$servicios = $this->Factura->Servicio->find('list');
@@ -78,10 +78,10 @@ class FacturasController extends AppController {
 		if ($this->request->is(array('post', 'put'))) {
 			$this->Factura->id=$id;
 			if ($this->Factura->save($this->request->data)) {
-				$this->Session->setFlash('La factura ha sido guardada.', $element = 'default', $params = array('class' => 'success'));
+				$this->Session->setFlash('La factura ha sido modificada.', $element = 'default', $params = array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('La factura no ha sido guardada, por favor intentelo de nuevo.'));
+				$this->Session->setFlash('La factura no ha sido guardada, por favor intentelo de nuevo.', 'default', array('class' => 'alert alert-success'));
 			}
 		} else {
 			$options = array('conditions' => array('Factura.' . $this->Factura->primaryKey => $id));
@@ -105,9 +105,9 @@ class FacturasController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Factura->delete()) {
-			$this->Session->setFlash('La factura ha sido eliminada.', 'default', array('class' => 'success'));
+			$this->Session->setFlash('La factura ha sido eliminada.', 'default', array('class' => 'alert alert-success'));
 		} else {
-			$this->Session->setFlash(__('La factura no ha sido eliminada, por favor intentelo de nuevo.'));
+			$this->Session->setFlash('La factura no ha sido eliminada, por favor intentelo de nuevo.', 'default', array('class' => 'alert alert-success'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

@@ -2,12 +2,12 @@
 	<div class="actions col-md-2">
 		<h4><?php echo __('Acciones'); ?></h4>
 		<ul>
-			<li><?php echo $this->Html->link(__('Editar Cliente'), array('action' => 'edit', $cliente['Cliente']['id']), array( 'class' => 'btn btn-sm btn-primary')); ?> </li>
+			<li><?php echo $this->Html->link(__('Editar Cliente'), array('action' => 'edit', $cliente['Cliente']['id']), array( 'class' => 'btn btn-sm btn-warning')); ?> </li>
 			<li><?php echo $this->Form->postLink(__('Eliminar Cliente'), array('action' => 'delete', $cliente['Cliente']['id']), array( 'class' => 'btn btn-sm btn-danger boton'), array(), __('Estás seguro que deseas eliminar a este cliente?', $cliente['Cliente']['id'])); ?> </li>
 		</ul>
 	</div>
 
-	<div class="clientes view col-md-8 col-md-offset-2">
+	<div class="clientes view col-md-10 text_right">
 	<h1><?php echo __('Cliente'); ?></h1>
 		<dl>
 			<div class="mb5">
@@ -83,9 +83,9 @@
 	<table cellpadding = "0" cellspacing = "0" class='table'>
 	<tr>
 		<th><?php echo __('Nombre'); ?></th>
-		<th><?php echo __('Vencimiento'); ?></th>
-		<th><?php echo __('PVP'); ?></th>
-		<th><?php echo __('Cancelado'); ?></th>
+		<th class='vencimiento'><?php echo __('Vencimiento'); ?></th>
+		<th class='pvp'><?php echo __('PVP'); ?></th>
+		<th class= 'estado'><?php echo __('Cancelado'); ?></th>
 		<th class="actions"><?php echo __('Acciones'); ?></th>
 	</tr>
 	<?php foreach ($cliente['Servicio'] as $servicio): ?>
@@ -93,7 +93,12 @@
 			<td><?php echo $servicio['name']; ?></td>
 			<td><?php echo $servicio['vencimiento']; ?></td>
 			<td><?php echo $servicio['pvp']; ?></td>
-			<td><?php echo $servicio['cancelado']; ?></td>
+			<td>
+				<?if ($servicio['cancelado'] == 1) {
+					echo "<span class='rojo'>Si</span>";
+				}
+				else echo "<span class='verde'>No</span>"; ?>
+			</td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('Detalle'), array('controller' => 'servicios', 'action' => 'view', $servicio['id']), array('class' => 'btn btn-xs btn-info')); ?>
 				<?php echo $this->Html->link(__('Editar'), array('controller' => 'servicios', 'action' => 'edit', $servicio['id']), array('class' => 'btn btn-xs btn-warning')); ?>

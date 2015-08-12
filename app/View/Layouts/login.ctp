@@ -22,20 +22,23 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $this->fetch('title'); ?>
+		Facturación de hostings
+		<?//php echo $this->fetch('title'); ?>
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+		//echo $this->Html->css('cake.generic');
+
+		echo $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+	<link rel="stylesheet" type="text/css" href="/hostings/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="/hostings/css/bootstrap.min.css">
-	<!-- <link rel="stylesheet" type="text/css" href="/hostings/css/index.css"> -->
+	<link rel="stylesheet" type="text/css" href="/hostings/css/index.css">
 </head>
 <body>
 	<div id="container">
@@ -60,5 +63,10 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		</div>
 	</div>
 	<?php //echo $this->element('sql_dump'); ?>
+
+	<script type="text/javascript">
+		$('#flashMessage').delay(5000).fadeOut(500);
+	</script>
+	
 </body>
 </html>
