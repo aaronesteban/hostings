@@ -15,7 +15,7 @@
 							<th class='nif'><?php echo $this->Paginator->sort('cif', 'CIF/NIF'); ?></th>
 							<th><?php echo $this->Paginator->sort('direccion', 'Dirección'); ?></th>
 							<th class='codigopostal'><?php echo $this->Paginator->sort('cp', 'CP'); ?></th>
-							<th><?php echo $this->Paginator->sort('localidad'); ?></th>
+							<th><?php echo $this->Paginator->sort('localidad', 'Ciudad'); ?></th>
 							<th><?php echo $this->Paginator->sort('provincia'); ?></th>
 							<th><?php echo $this->Paginator->sort('email'); ?></th>
 							<th><?php echo $this->Paginator->sort('created', 'Creado'); ?></th> 				<? //FORMATEAR FECHAS ?>

@@ -2,7 +2,7 @@
 	margin-bottom: 20px;
 }
 .logo{
-	width: 100px;
+	width: 90px;
 	height: auto;
 	margin-bottom: 20px;
 }
@@ -82,11 +82,17 @@ li{
 .display_inline{
 	display: inline-block;
 }
+.display_block{
+	display: block;
+}
 .display_inline:nth-child(2){
 	clear: both;
 }
 .mb5{
 	margin-bottom: 5px;
+}
+.mb20{
+	margin-bottom: 20px;
 }
 .agrega_cliente label{
 	display: block;

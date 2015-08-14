@@ -39,7 +39,7 @@
 				</dd>
 			</div>
 			<div class="mb5">
-				<dt class="display_inline"><?php echo __('Localidad: '); ?></dt>
+				<dt class="display_inline"><?php echo __('Ciudad: '); ?></dt>
 				<dd class="display_inline">
 					<?php echo h($cliente['Cliente']['localidad']); ?>
 					&nbsp;
