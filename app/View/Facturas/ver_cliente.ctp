@@ -1,15 +1,17 @@
 <?
 $facturacion = Configure::read('Facturacion');
-$iva = $factura['Factura']['pvp'] * $factura['Factura']['iva'] / 100;
-$irpf = $factura['Factura']['pvp'] * $factura['Factura']['irpf'] /100;
-$total = $factura['Factura']['pvp'] + $iva - $irpf;
 ?>
 <div class="row">
 	<div class="col-xs-6">
-		<img class="logo" alt="logo" src="http://deramosandserch.com/img/logo_deramosandserch.svg">
+		<?=$this->Html->image('logo_deramosandserch.png', array('fullBase'=>true, 'class' => 'logo')) ?>
 	</div>
 	<div class="col-xs-6 text-right">
-		<h1>FACTURA #001</h1>
+		<h1>FACTURA 
+			<?if ($factura['Factura']['pagado']){
+				echo getRef($factura['Factura']['invoice_num']);
+			}
+			?>
+		</h1>
 	</div>
 </div>
 <div class="row">
@@ -143,21 +145,34 @@ $total = $factura['Factura']['pvp'] + $iva - $irpf;
 	<div class="col-xs-2 mb20">
 		<strong>
 			<?=$factura['Factura']['pvp'] ?> €<br>
-			<?=$iva?> €<br>
-			<?=$irpf?> €<br>
-			<?=$total?> €<br>
+			<?=$factura['Factura']['precio_iva']?> €<br>
+			<?=$factura['Factura']['precio_irpf']?> €<br>
+			<?=$factura['Factura']['precio_total']?> €<br>
 		</strong>
 	</div>
 </div>
 <div class="row">
-	<div class = "col-xs-6">
+	<div class = "col-xs-6 noprint">
 		<?if($factura['Factura']['pagado'] == 0):?>
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4>Métodos de pago</h4>
 				</div>
 				<div class="panel-body">
-					 <span class="display_block">Paypal</span>
+					 <span class="display_block">
+
+						<?=$this->Paypal->button("Paypal", array(
+							'test' =>  Configure::read('debug'),
+							'type' => 'cart',
+							'items' => $items,
+							'custom' => $factura['Factura']['id'],
+							'return' => Router::url(array('controller'=>'facturas', 'action'=>'payment_done', $factura['Factura']['hash']), true),
+							//'handling_cart' => $total['gastos_envio'],
+							//'shipping_1' => $total['gastos_envio'],
+							//'discount_amount_cart' => array_sum($total['discount']),
+							'tax_cart' => 0
+						));?>
+					 </span>
 					 <span class="display_block">Stripe</span>
 				</div>
 			</div>
@@ -167,7 +182,7 @@ $total = $factura['Factura']['pvp'] + $iva - $irpf;
 					<h4>Acciones</h4>
 				</div>
 				<div class="panel-body">
-					<span class="btn btn-sm btn-primary">Descargar Factura</span>
+					<a class="btn btn-sm btn-primary" href="<?=Router::url(array('controller'=>'facturas', 'action'=>'pdf', $factura['Factura']['hash']))?>">Descargar Factura</a>
 				</div>
 			</div>
 		<?endif;?>

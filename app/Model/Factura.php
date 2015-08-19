@@ -92,4 +92,48 @@ class Factura extends AppModel {
 			'order' => ''
 		)
 	);
+
+
+	/**
+	 * afterFind callback
+	 *
+	 * @param $results array
+	 * @param $primary boolean
+	 * @return mixed
+	 */
+	public function afterFind($results, $primary = false) {
+
+		foreach($results as &$factura) {
+			if (!empty($factura['Factura']['pvp'])) {
+				$iva = $factura['Factura']['pvp'] * $factura['Factura']['iva'] / 100;
+				$irpf = $factura['Factura']['pvp'] * $factura['Factura']['irpf'] /100;
+				$total = $factura['Factura']['pvp'] + $iva - $irpf;
+
+				$factura['Factura']['precio_iva'] = $iva;
+				$factura['Factura']['precio_irpf'] = $irpf;
+				$factura['Factura']['precio_total'] = $total;
+			}
+
+		}
+
+		return $results;
+	}
+	
+
+	public function getLastInvoiceNum(){
+
+		$num = $this->find('first', array(
+			'contain' => array(),
+			'conditions' => array('Factura.pagado' => 1),
+			'order' => array('Factura.invoice_num' => 'desc'),
+			'fields' => array('Factura.invoice_num'),
+		));
+		$num = $num['Factura']['invoice_num'];
+		
+		if (!$num) {
+			return 0;
+		}
+		return $num;
+
+	}
 }

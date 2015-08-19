@@ -114,6 +114,92 @@ CakeLog::config('error', array(
 ));
 CakePlugin::load('DebugKit');
 
+CakePlugin::load('PaypalIpn', array('bootstrap' => array('paypal_ipn_config'), 'routes' => true));
+//CakePlugin::load('Stripe');
 
+//CakePlugin::load('CakePdf', array('bootstrap' => true, 'routes' => true));
 
 Configure::load('config');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function leading_zeros($value, $places){
+// Function written by Marcus L. Griswold (vujsa)
+// Can be found at http://www.handyphp.com
+// Do not remove this header!
+	$leading="";
+	if(is_numeric($value)){
+		for($x = 1; $x <= $places; $x++){
+			$ceiling = pow(10, $x);
+			if($value < $ceiling){
+				$zeros = $places - $x;
+				for($y = 1; $y <= $zeros; $y++){
+					$leading .= "0";
+				}
+			$x = $places + 1;
+			}
+		}
+		$output = $leading . $value;
+	}
+	else{
+		$output = $value;
+	}
+	return $output;
+}
+
+function getRef($num){
+	return leading_zeros($num, 4);
+}
+
+
+function format_precio($precio){
+	return number_format($precio,2, "." , ",");
+}
+
+
+function getBaseUrl(){
+	$host = $_SERVER['SERVER_NAME'];
+	if($_SERVER['SERVER_PORT'] != 80){
+		$port = ":".$_SERVER['SERVER_PORT'];
+	}else{
+		$port = "";
+	}
+	if(!empty($_SERVER['HTTPS'])){
+		$protocol = "https://";
+	}else{
+		$protocol = "http://";
+	}
+	return $protocol.$host.$port;
+}
+
+function remote_ip(){
+	if(getenv("HTTP_CLIENT_IP") && strcasecmp(getenv("HTTP_CLIENT_IP"), "unknown")){
+			 $ip = getenv("HTTP_CLIENT_IP");
+	}
+	   elseif(getenv("HTTP_X_FORWARDED_FOR") && strcasecmp(getenv("HTTP_X_FORWARDED_FOR"), "unknown")){
+		   $ip = getenv("HTTP_X_FORWARDED_FOR");
+	   }
+	   elseif(getenv("REMOTE_ADDR") && strcasecmp(getenv("REMOTE_ADDR"), "unknown")){
+		   $ip = getenv("REMOTE_ADDR");
+	   }
+	   elseif(isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] && strcasecmp($_SERVER['REMOTE_ADDR'], "unknown")){
+
+		   $ip = $_SERVER['REMOTE_ADDR'];
+	   }
+	   else {
+		   $ip = "Unknown";
+	   }
+	  return $ip;
+}

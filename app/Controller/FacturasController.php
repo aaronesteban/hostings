@@ -15,9 +15,11 @@ class FacturasController extends AppController {
  */
 	public $components = array('Paginator');
 
+	public $helpers = array('PaypalIpn.Paypal');
+
 
     public function beforeFilter() {
-        $this->Auth->allow('ver_cliente');
+        $this->Auth->allow('ver_cliente', 'payment_done', 'pdf');
     }
 
 /**
@@ -112,14 +114,75 @@ class FacturasController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
 
+
+
 	public function ver_cliente($hash = null) {
 		$this->layout = 'factura';
-		$this->set('factura', $this->Factura->find('first', array(
+
+		$factura = $this->Factura->find('first', array(
 			'conditions' => array(
 				'hash' => $hash,
 			),
 			'contain' => array('Servicio'=>array('Cliente'))
-		)));
+		));
+
+		$this->set('factura', $factura);
+
+
+		//ITEMS FOR PAYPAL
+		$items = array();
+		$items[] = array(
+			'item_name' => $factura['Factura']['name'] ,
+			'amount' => $factura['Factura']['precio_total'] ,
+			'quantity' => 1,
+		);
+		$this->set(compact('items'));
+
+	}
+
+
+	public function pdf($hash = null) {
+		$this->layout = 'ajax';
+		$this->autoRender = false;
+
+		$factura = $this->Factura->find('first', array(
+			'conditions' => array(
+				'hash' => $hash,
+			),
+			'contain' => array('Servicio'=>array('Cliente'))
+		));
+		$this->set('factura', $factura);
+
+        $this->pdfConfig = array(
+            'orientation' => 'portrait',
+            'filename' => 'Invoice_' . $hash
+        );
+
+		require_once(APP.'Vendor/dompdf/dompdf_config.inc.php');
+
+		$dompdf = new DOMPDF();
+
+		$this->set('cssfile', APP.'webroot/css/pdf.css');
+		$dompdf->set_paper("A4", "portrait");		 
+
+		$view = new View($this,false);
+		$view->viewPath = 'Facturas';
+		$view->layout = 'factura';
+		$html = $view->render('ver_cliente');
+		$html = str_replace('€', '&#0128;', $html);
+
+		$dompdf->load_html(utf8_decode($html));
+		$dompdf->render();
+		$dompdf->stream('factura_'.$hash, array('Attachment'=>0));
+
+	}
+
+
+
+	public function payment_done($hash = null) {
+		$this->layout = 'factura';
+		$this->set(compact('hash'));
+
 	}
 
 }

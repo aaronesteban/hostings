@@ -49,6 +49,10 @@
 	// Users
 	Router::connect('/nuevo_usuario', array('controller' => 'users', 'action' => 'add'));
 	
+
+	Router::connect('/payment-done', array('controller' => 'facturas', 'action' => 'payment_done'));
+	Router::connect('/payment-done/*', array('controller' => 'facturas', 'action' => 'payment_done'));
+	
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

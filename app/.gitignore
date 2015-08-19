@@ -1,0 +1,6 @@
+dandelion.yml
+Config/config_local.php
+tmp/**/*
+webroot/robots.txt
+webroot/files/*
+webroot/resize/*

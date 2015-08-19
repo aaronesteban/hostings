@@ -38,7 +38,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	?>
 	<link rel="stylesheet" type="text/css" href="/hostings/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="/hostings/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/hostings/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/hostingscss/index.css">
 </head>
 <body>
 	<div id="container">

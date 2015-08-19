@@ -35,6 +35,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
+
+		if (isset($cssfile)){
+			echo '<style>'.utf8_encode(file_get_contents($cssfile)).'</style>';
+		}
+
 	?>
 	<link rel="stylesheet" type="text/css" href="/hostings/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="/hostings/css/bootstrap.min.css">
